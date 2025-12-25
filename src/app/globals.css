@@ -1,0 +1,140 @@
+:root {
+  --font-main: 'Outfit', sans-serif;
+  --color-text: #ffffff;
+  --color-bg-start: #1a103c;
+  --color-bg-end: #0f0b1e;
+
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --glass-blur: 12px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-main);
+  color: var(--color-text);
+  background: radial-gradient(circle at 50% 50%, #2a1b4e 0%, #150f2e 100%);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 16px;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+/* Responsive Layout Classes */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 4rem;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.hero-content {
+  position: absolute;
+  left: 4rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30%;
+  z-index: 10;
+}
+
+.controls {
+  position: absolute;
+  right: 4rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  z-index: 10;
+}
+
+.footer-data {
+  position: absolute;
+  bottom: 3rem;
+  width: 100%;
+  padding: 0 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  z-index: 10;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+}
+
+/* Mobile / Tablet Overrides */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem 1.5rem;
+  }
+
+  .nav-links {
+    display: none;
+    /* Hide for simplicity on mobile as strict request */
+  }
+
+  .hero-content {
+    left: 50%;
+    top: 20%;
+    transform: translateX(-50%);
+    width: 80%;
+    text-align: center;
+  }
+
+  .controls {
+    right: 50%;
+    top: auto;
+    bottom: 25%;
+    transform: translateX(50%);
+    flex-direction: row;
+  }
+
+  .footer-data {
+    padding: 0 1.5rem;
+    bottom: 1.5rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .footer-data>div:first-child {
+    /* Left spacer */
+    display: none;
+  }
+
+  .footer-data>div:last-child {
+    /* Buttons */
+    width: 100%;
+    justify-content: center;
+  }
+}
