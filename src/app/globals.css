@@ -590,15 +590,15 @@ button:disabled {
   transition: opacity 0.3s ease;
 }
 
-/* Mobile / Tablet Overrides - VERTICAL LAYOUT REDESIGN */
+/* Mobile / Tablet Overrides - REDUCED BLUR & ANIMATIONS */
 @media (max-width: 768px) {
 
-  /* Navbar - Transparent glass */
+  /* Navbar - Reduced blur */
   .navbar {
     padding: 1.2rem 1rem;
     background: transparent;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
     position: fixed;
   }
 
@@ -714,7 +714,7 @@ button:disabled {
     transform: scale(0.92);
   }
 
-  /* Product Specs - Positioned after price in footer */
+  /* Product Specs - Positioned after price in footer, lighter blur */
   .product-specs {
     left: 50%;
     transform: translateX(-50%);
@@ -725,11 +725,13 @@ button:disabled {
     min-width: auto;
     padding: 0.8rem 1rem;
     background: transparent !important;
-    backdrop-filter: blur(30px);
+    backdrop-filter: blur(10px) !important;
+    /* Reduced blur */
     font-size: 0.72rem;
     z-index: 40;
     border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    /* Lighter shadow */
   }
 
   .product-specs>div:first-child {
@@ -752,7 +754,7 @@ button:disabled {
     display: none;
   }
 
-  /* Footer - Higher z-index to appear above specs */
+  /* Footer - Higher z-index, lighter blur */
   .footer-data {
     padding: 1rem 1rem 3.5rem;
     bottom: 0;
@@ -762,9 +764,11 @@ button:disabled {
     width: 100%;
     text-align: center;
     background: transparent !important;
-    backdrop-filter: blur(25px);
+    backdrop-filter: blur(10px) !important;
+    /* Reduced blur */
     position: fixed;
     z-index: 50;
+    display: flex !important;
   }
 
   .discount-container {
