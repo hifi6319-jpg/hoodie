@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { useCartStore } from '../store/cart'
+import { useStore } from '../store'
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false)
     const toggleCart = useCartStore(state => state.toggleCart)
     const getCartCount = useCartStore(state => state.getCartCount)
+    const { user, logout } = useStore()
     const [mounted, setMounted] = useState(false)
 
     useEffect(() => {
@@ -13,6 +15,12 @@ export default function Navbar() {
 
     const toggleMenu = () => {
         setIsOpen(!isOpen)
+    }
+
+    const handleLogout = (e) => {
+        e.preventDefault()
+        logout()
+        setIsOpen(false)
     }
 
     // Lock body scroll when menu is open
@@ -34,6 +42,11 @@ export default function Navbar() {
                 <a href="/collection" style={{ textDecoration: 'none', color: 'rgba(255,255,255,0.8)', fontSize: '0.9rem', fontWeight: 500 }}>Collection</a>
                 <a href="/about" style={{ textDecoration: 'none', color: 'rgba(255,255,255,0.8)', fontSize: '0.9rem', fontWeight: 500 }}>About</a>
                 <a href="/contact" style={{ textDecoration: 'none', color: 'rgba(255,255,255,0.8)', fontSize: '0.9rem', fontWeight: 500 }}>Contact</a>
+                {user ? (
+                    <a href="#" onClick={handleLogout} style={{ textDecoration: 'none', color: '#ff4d4d', fontSize: '0.9rem', fontWeight: 500 }}>Logout</a>
+                ) : (
+                    <a href="/auth" style={{ textDecoration: 'none', color: 'rgba(255,255,255,0.8)', fontSize: '0.9rem', fontWeight: 500 }}>Login</a>
+                )}
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', zIndex: 201 }}>
@@ -92,6 +105,11 @@ export default function Navbar() {
                     <a href="/collection" onClick={() => setIsOpen(false)} style={{ animationDelay: '0.2s', opacity: isOpen ? 1 : 0, transform: isOpen ? 'translateY(0)' : 'translateY(20px)' }}>Collection</a>
                     <a href="/about" onClick={() => setIsOpen(false)} style={{ animationDelay: '0.3s', opacity: isOpen ? 1 : 0, transform: isOpen ? 'translateY(0)' : 'translateY(20px)' }}>About</a>
                     <a href="/contact" onClick={() => setIsOpen(false)} style={{ animationDelay: '0.4s', opacity: isOpen ? 1 : 0, transform: isOpen ? 'translateY(0)' : 'translateY(20px)' }}>Contact</a>
+                    {user ? (
+                        <a href="#" onClick={handleLogout} style={{ animationDelay: '0.5s', opacity: isOpen ? 1 : 0, transform: isOpen ? 'translateY(0)' : 'translateY(20px)', color: '#ff4d4d' }}>Logout</a>
+                    ) : (
+                        <a href="/auth" onClick={() => setIsOpen(false)} style={{ animationDelay: '0.5s', opacity: isOpen ? 1 : 0, transform: isOpen ? 'translateY(0)' : 'translateY(20px)' }}>Login</a>
+                    )}
                 </div>
             </div>
         </nav>
