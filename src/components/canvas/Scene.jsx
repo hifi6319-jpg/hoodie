@@ -65,8 +65,8 @@ function ResponsiveCamera() {
 
     // Adjusted for larger, centered hoodie on mobile
     // Closer camera = larger model
-    const targetZ = isSmallMobile ? 24 : isMobile ? 22 : 15
-    const targetY = isMobile ? 1 : 0 // Centered vertical position
+    const targetZ = isSmallMobile ? 22 : isMobile ? 20 : 15
+    const targetY = isMobile ? 0.5 : 0 // Centered vertical position
     const fov = isSmallMobile ? 40 : isMobile ? 38 : 35
 
     return (
@@ -76,7 +76,10 @@ function ResponsiveCamera() {
             fov={fov}
             near={0.1}
             far={100}
-            onUpdate={(c) => c.updateProjectionMatrix()}
+            onUpdate={(c) => {
+                c.updateProjectionMatrix()
+                c.lookAt(0, 0, 0)
+            }}
         />
     )
 }
