@@ -1,0 +1,58 @@
+/* Tablet Landscape (769px - 1024px) - PROPER ALIGNMENT */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .navbar {
+        padding: 2rem 3rem;
+    }
+
+    .hero-content {
+        left: 3rem;
+        top: 15%;
+        width: 40%;
+        max-width: 450px;
+        text-align: left;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(2rem, 4vw, 2.5rem) !important;
+    }
+
+    .hero-content h2 {
+        font-size: clamp(1.2rem, 3vw, 1.5rem) !important;
+    }
+
+    .hero-content p {
+        font-size: 0.9rem !important;
+    }
+
+    .controls {
+        right: auto;
+        left: 2.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .size-selector {
+        right: 2.5rem;
+        left: auto;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .product-specs {
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 120px;
+        max-width: 450px;
+    }
+
+    .footer-data {
+        padding: 0 2.5rem;
+        bottom: 4rem;
+    }
+
+    .page-content {
+        margin: 140px auto 40px;
+        width: 85%;
+        padding: 3rem;
+    }
+}
