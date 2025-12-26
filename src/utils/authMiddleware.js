@@ -1,4 +1,4 @@
-import { verifyToken, getTokenFromCookie } from './jwt'
+import { verifyToken, getTokenFromCookie } from '@/utils/jwt'
 
 export const authenticateAdmin = (handler) => {
     return async (req, res) => {

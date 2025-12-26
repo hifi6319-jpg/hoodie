@@ -1,6 +1,8 @@
-import dbConnect from '../../../../../../lib/db'
-import Order from '../../../../../../models/Order'
-import { authenticateAdmin } from '../../../../../../utils/authMiddleware'
+import dbConnect from '@/lib/db'
+import Order from '@/models/Order'
+import { authenticateAdmin } from '@/utils/authMiddleware'
+
+export const dynamic = 'force-dynamic'
 
 async function handler(req, res) {
     const { orderId } = req.query

@@ -1,13 +1,10 @@
-import dbConnect from '../../../lib/db'
-import Order from '../../../models/Order'
-import Product from '../../../models/Product'
-import { validateOrderData, sanitizeInput } from '../../../utils/validation'
+import dbConnect from '@/lib/db'
+import Order from '@/models/Order'
+import Product from '@/models/Product'
+import { validateOrderData, sanitizeInput } from '@/utils/validation'
 import Razorpay from 'razorpay'
 
-const razorpay = new Razorpay({
-    key_id: process.env.RAZORPAY_KEY_ID,
-    key_secret: process.env.RAZORPAY_KEY_SECRET
-})
+export const dynamic = 'force-dynamic'
 
 export default async function handler(req, res) {
     if (req.method !== 'POST') {
@@ -16,6 +13,12 @@ export default async function handler(req, res) {
             message: 'Method not allowed'
         })
     }
+
+    // Initialize Razorpay conditionally inside handler
+    const razorpay = new Razorpay({
+        key_id: process.env.RAZORPAY_KEY_ID || 'dummy_id',
+        key_secret: process.env.RAZORPAY_KEY_SECRET || 'dummy_secret'
+    })
 
     try {
         await dbConnect()

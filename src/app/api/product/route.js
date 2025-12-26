@@ -1,5 +1,7 @@
-import dbConnect from '../../../lib/db'
-import Product from '../../../models/Product'
+import dbConnect from '@/lib/db'
+import Product from '@/models/Product'
+
+export const dynamic = 'force-dynamic'
 
 export default async function handler(req, res) {
     if (req.method !== 'GET') {

@@ -1,7 +1,9 @@
-import dbConnect from '../../../../lib/db'
-import Order from '../../../../models/Order'
-import Product from '../../../../models/Product'
+import dbConnect from '@/lib/db'
+import Order from '@/models/Order'
+import Product from '@/models/Product'
 import crypto from 'crypto'
+
+export const dynamic = 'force-dynamic'
 
 export default async function handler(req, res) {
     if (req.method !== 'POST') {

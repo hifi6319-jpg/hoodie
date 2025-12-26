@@ -1,7 +1,9 @@
-import dbConnect from '../../../../lib/db'
-import Admin from '../../../../models/Admin'
-import { generateToken, setAuthCookie } from '../../../../utils/jwt'
+import dbConnect from '@/lib/db'
+import Admin from '@/models/Admin'
+import { generateToken, setAuthCookie } from '@/utils/jwt'
 import bcrypt from 'bcryptjs'
+
+export const dynamic = 'force-dynamic'
 
 export default async function handler(req, res) {
     if (req.method !== 'POST') {

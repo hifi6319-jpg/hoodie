@@ -1,4 +1,6 @@
-import { clearAuthCookie } from '../../../../../utils/jwt'
+import { clearAuthCookie } from '@/utils/jwt'
+
+export const dynamic = 'force-dynamic'
 
 export default async function handler(req, res) {
     if (req.method !== 'POST') {
